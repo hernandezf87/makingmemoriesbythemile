@@ -1,0 +1,46 @@
+<link href="https://fonts.googleapis.com/css?family=Faster+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+
+<body id="luthers">
+  <div class="header" id="luthers-name">
+    <div>Luther</div>
+  </div>
+  <!-- navbar menu -->
+<div class="dropdown1">
+  <button onclick="myFunction()" class="dropbtn1"><img src="https://img.icons8.com/dusk/96/000000/define-location.png"></button>
+  <div id="myDropdown" class="dropdown-content">
+      <%= link_to "Home", root_path, class:"nav-link" %>
+      <%= link_to "Stephanie", stephanie_path, class:"nav-link" %>
+      <%= link_to "Delaney", delani_path, class:"nav-link" %>
+      <%= link_to "Cole", cole_path, class:"nav-link" %>
+      <%= link_to "Log In", root_path, class:"nav-link" %>
+      <%= link_to "Log out", logout_path, method: :delete %>
+  </div>
+</div>
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn1')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown1 = dropdowns[i];
+      if (openDropdown1.classList.contains('show')) {
+        openDropdown1.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</body>

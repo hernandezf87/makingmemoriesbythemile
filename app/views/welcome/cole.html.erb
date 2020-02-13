@@ -1,0 +1,56 @@
+<link href="https://fonts.googleapis.com/css?family=Faster+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<body id="coles-page">
+
+  <div class="header" id="coles-name">
+    <div class="w3-display-topmiddle w3-hide-small">Crusine with cole</div>
+  </div>
+
+  <!-- navbar -->
+  <div id="container1">
+    <div id="burger">
+      <div class="bun top"></div>
+      <div class="filling"></div>
+      <div class="bun bottom"></div>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li>
+        <%= link_to "Home", root_path, class:"nav-link" %>
+      </li>
+      <li class="green">
+        <%= link_to "Stephanie", stephanie_path, class:"nav-link" %>
+      </li>
+      <li class="red">
+        <%= link_to "Delaney", delani_path, class:"nav-link" %>
+      </li>
+      <li class="yellow">
+        <%= link_to "Luther", luther_path, class:"nav-link" %>
+      </li>
+      <li class="yellow">
+        <%= link_to "Log In", root_path, class:"nav-link" %>
+      </li>
+      <li class="purple">
+        <%= link_to "Log out", logout_path, method: :delete %>
+      </li>
+      <li class="purple">
+        <%= link_to "Log out", logout_path, method: :delete %>
+      </li>
+    </ul>
+  </nav>
+  <div class="jumbotron" id="coles-jumbotron" style="margin-bottom:0"></div>
+
+  <script>
+    $("#burger").click(function () {
+      $(this).toggleClass("active");
+      $("nav").toggleClass("show");
+    });
+  </script>
+  <!-- end of navbar -->
+</body>
