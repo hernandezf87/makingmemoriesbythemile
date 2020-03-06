@@ -1,30 +1,46 @@
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- boostrap styling-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <p>
   <%= link_to "Create A New Memory", new_article_path %>
+  ||
+  <%= link_to 'Stephanie', stephanie_path %>||
+  <%= link_to 'Luther', luther_path %>
+  ||
+  <%= link_to 'Delani', delani_path %>
+  ||
+  <%= link_to 'Cole', cole_path %>
+  ||
+  <%= link_to 'home', home_path %>
 </p>
+
 <% @articles.each do |article| %>
-  <div class="card text-center">
-    <div class="card-header">
-      <%= link_to article.title, article_path(article) %>
-    </div>
-    <div class="card-body">
-      <p class="card-text"><%= truncate(article.description) %>
-      </p>
-    </div>
-    <% if logged_in? && current_user == article.user %>
-      <div class="article-actions">
-        <%= link_to "Edit this memory", edit_article_path(article), class: "btn btn-primary btn-sm"%>
-        <%= link_to "delete", article_path(article), method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
-      </div>
-      <div class="card-footer text-muted">
-        Created by:
-        <%= article.user.username if article.user%>,
-        <%= time_ago_in_words(article.created_at) %>
-        ago, last updated:
-        <%= time_ago_in_words(article.updated_at) %>
-        ago
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">
+          <%= link_to article.title, article_path(article)%></h4>
+        <p class="card-text">
+          <%= truncate(article.description)%></p>
+        <% if logged_in? && current_user == article.user %>
+          <div class="article-actions">
+            <%= link_to "Edit this memory", edit_article_path(article), class: "btn btn-primary btn-sm"%>
+            <%= link_to "delete", article_path(article), method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
+          </div>
+          <div class="card-footer">
+            Created by:
+            <%= article.user.name if article.user%>,
+            <%= time_ago_in_words(article.created_at) %>
+            ago, last updated:
+            <%= time_ago_in_words(article.updated_at) %>
+            ago
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
-<% end %>
-
-<%= link_to 'home', home_path %>

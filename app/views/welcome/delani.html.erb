@@ -1,3 +1,7 @@
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- boostrap styling-->
 <link href="https://fonts.googleapis.com/css?family=Faster+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -5,35 +9,104 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <body id="d-page">
-  <div class="jumbotron jumbotron-fluid" id="delaney">
-    <div class="container">
-      <h1 class="display-4">DELANEY</h1>
-      <p class="lead"></p>
-    </div>
+  <div class="header" id="delaney-name">
+    <div>Delaney</div>
   </div>
 
-  <nav class="menu0">
-  <ol>
-    <li class="menu-item1"><a href="#0">Home</a></li>
-    <li class="menu-item1"><a href="#0">About</a></li>
-    <li class="menu-item1">
-      <a href="#0">Widgets</a>
-      <ol class="sub-menu2">
-        <li class="menu-item1"><a href="#0">Big Widgets</a></li>
-        <li class="menu-item1"><a href="#0">Bigger Widgets</a></li>
-        <li class="menu-item1"><a href="#0">Huge Widgets</a></li>
-      </ol>
-    </li>
-    <li class="menu-item1">
-      <a href="#0">Kabobs</a>
-      <ol class="sub-menu2">
-        <li class="menu-item1"><a href="#0">Shishkabobs</a></li>
-        <li class="menu-item1"><a href="#0">BBQ kabobs</a></li>
-        <li class="menu-item1"><a href="#0">Summer kabobs</a></li>
-      </ol>
-    </li>
-    <li class="menu-item1"><a href="#0">Contact</a></li>
-  </ol>
-</nav>
+  <!-- navbar -->
+  <div class="topnav">
+    <ol>
+      <li class="menu-item"><%= link_to "Home", home_path, class:"nav-link" %></li>
+      <li class="menu-item">
+        <a href="#0">Family</a>
+        <ol class="sub-menu">
+          <li class="menu-item">
+            <%= link_to "Stephanie", stephanie_path, class:"nav-link" %>
+          </li>
+          <li class="menu-item">
+            <%= link_to "Luther", luther_path, class:"nav-link" %>
+          </li>
+          <li class="menu-item">
+            <%= link_to "Cole", cole_path, class:"nav-link" %>
+          </li>
+          <li class="menu-item">
+            <%= link_to "Create A New Memory", new_article_path, class:"nav-link" %>
+          </li>
+        </ol>
+      </li>
+      <li class="menu-item">
+        <a href="#0">Kabobs</a>
+        <ol class="sub-menu">
+          <li class="menu-item">
+            <a href="#0">Shishkabobs</a>
+          </li>
+          <li class="menu-item">
+            <a href="#0">BBQ kabobs</a>
+          </li>
+          <li class="menu-item">
+            <a href="#0">Summer kabobs</a>
+          </li>
+        </ol>
+      </li>
+      <li class="menu-item">
+        <%= link_to "Log In", root_path, class:"nav-link" %>
+      </li>
+      <li class="menu-item">
+        <%= link_to "Log out", logout_path, method: :delete %>
+      </li>
+    </ol>
+  </div>
+  <br><br><br><br>
+  <!-- articles section -->
+  <% @articles.each do |article| %>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">
+            <%= link_to article.title, article_path(article)%></h4>
+          <p class="card-text">
+            <%= truncate(article.description)%></p>
+          <% if logged_in? && current_user == article.user %>
+            <div class="article-actions">
+              <%= link_to "Edit this memory", edit_article_path(article), class: "btn btn-primary btn-sm"%>
+              <%= link_to "delete", article_path(article), method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
+            </div>
+            <div class="card-footer">
+              Created by:
+              <%= article.user.name if article.user%>,
+              <%= time_ago_in_words(article.created_at) %>
+              ago, last updated:
+              <%= time_ago_in_words(article.updated_at) %>
+              ago
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <!-- back to top button -->
+  <a id="topbutton4"><img src="https://img.icons8.com/cute-clipart/64/000000/login-rounded-up.png"></a>
 
+  <script>
+    jQuery(document).ready(function () {
+
+      var btn = $('#topbutton4');
+
+      $(window).scroll(function () {
+        if ($(window).scrollTop() > 300) {
+          btn.addClass('show');
+        } else {
+          btn.removeClass('show');
+        }
+      });
+
+      btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({
+          scrollTop: 0
+        }, '300');
+      });
+
+    });
+  </script>
 </body>

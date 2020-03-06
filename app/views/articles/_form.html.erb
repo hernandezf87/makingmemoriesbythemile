@@ -1,59 +1,43 @@
-<% if @article.errors.any? %>
-  <h4>The following errors prevented this post to be created</h4>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body id="form-body">
+    <% if @article.errors.any? %>
+      <h4>The following errors prevented this memory to be created</h4>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
+    <%= form_for @article do |f| %>
+    <p>
+      <%= f.label :location %><br/>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :description %><br/>
+      <%= f.text_area :description %>
+    </p>
+    <p>
+      <%= f.label :Videos %>
+      <%= f.file_field :clip%>
+    </p>
 
-  <div class="row" id="form-row">
-    <div class="col-md-12">
-      <%= form_for @article do |f| %>
-          <%= f.label :Location %>
-          <%= f.text_field :title, class:'form-control'%>
-           <div class="field">
-             <%= f.text_area :description %>
-           </div>
-      <p>
-        <%= f.label :Video %>
-      </p>
+      <%= f.submit :"create memory"%>
+  <% end %>
+  <%= link_to "Back to Memories listings", articles_path %>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"/>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-      <p>
-        <%= f.file_field :clip %>
-      </p>
-      <div class="field">
-        <%= f.text_area :description %>
-      </div>
-      <p>
-        <%= f.label :Photos %>
-        </p>
-        <p>
-        <%= f.file_field :thumbnail %>
-      </p>
-      <p>
-        <%= f.label :Assignment %>
-        </p>
-        <p>
-        <%= f.text_area :description %>
-      </p>
-      <p>
-        <%= f.label :description %>
-        </p>
-        <div class="field">
-          <%= f.rich_text_area :content %>
-        </div>
-      <p>
-        <%= f.submit :"create memory"%>
-      </p>
-    <% end %>
-    <!--comment form start -->
-
-
-  <!--comment form end -->
-  </div>
-  </div>
-
-
-
-<%= link_to  "Back to Memories listings", articles_path %>
+</body>
+</html>

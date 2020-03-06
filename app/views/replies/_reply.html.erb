@@ -1,12 +1,12 @@
-<div class="box">
+<div class="container">
   <article class="media">
     <div class="media-content">
       <div class="content">
-        <p> <strong> <%= reply.name %>:  </strong>
+        <p> <strong> <%= reply.name %></strong>
         <%= reply.reply %>
         </p>
       </div>
-    </div>
-    <%= link_to 'Delete', [reply.article, reply], method: :delete, class: "btn btn-danger", data: {confirm: "are you sure?"} %>
+    </div><br>
+    <%= link_to 'Delete', [reply.article, reply], method: :delete, class: "btn-small btn-danger", data: {confirm: "are you sure?"} %>
   </article>
 </div>

@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   root 'welcome#initial'
   get 'home', to:'welcome#home'
-  resources :articles
-
   get 'signup', to:'users#new'
   #resources :users, except: [:new]
   post 'signup', to: 'users#create'
@@ -16,9 +14,11 @@ Rails.application.routes.draw do
   get 'luther', to: 'welcome#luther'
   get 'delani', to: 'welcome#delani'
   get 'cole', to: 'welcome#cole'
-
+  get 'showluther', to: 'articles#showluther'
+  # resources :users, path: ""
 
   resources :comments
+  resources :articles
 
 
 

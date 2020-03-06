@@ -1,5 +1,5 @@
 class RepliesController < ApplicationController
-    before_action :require_admin, only:[:destroy]
+    # before_action :require_admin, only:[:destroy]
 
   def create
     @article = Article.find(params[:article_id])
@@ -16,11 +16,11 @@ class RepliesController < ApplicationController
     redirect_to articles_path
   end
 
-  def require_admin
-    if logged_in? and !current_user.admin?
-      flash[:dange] = "Only admin can user can perform that action"
-      redirect_to root_path
-    end
-  end
+  # def require_admin
+  #   if logged_in? and !current_user.admin?
+  #     flash[:dange] = "Only admin can user can perform that action"
+  #     redirect_to articles_path
+  #   end
+  # end
 
 end

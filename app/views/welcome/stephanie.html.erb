@@ -8,6 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+
 <body id="steph1">
 
   <div class="header" id="stephs-name">
@@ -18,14 +19,64 @@
     <button class="dropbtn">
       <img src="https://img.icons8.com/nolan/96/menu.png"></button>
     <div class="dropdown-content">
-      <%= link_to "Home", root_path, class:"nav-link" %>
+      <%= link_to "Home", home_path, class:"nav-link" %>
       <%= link_to "Delaney", delani_path, class:"nav-link" %>
       <%= link_to "Cole", cole_path, class:"nav-link" %>
       <%= link_to "Luther", luther_path, class:"nav-link" %>
+      <%= link_to "Create A New Memory", new_article_path, class:"nav-link" %>
       <%= link_to "Log In", root_path, class:"nav-link" %>
       <%= link_to "Log out", logout_path, method: :delete %>
     </div>
   </div>
+  <!-- articles section -->
+  <% @articles.each do |article| %>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">
+            <%= link_to article.title, article_path(article)%></h4>
+          <p class="card-text">
+            <%= truncate(article.description)%></p>
+          <% if logged_in? && current_user == article.user %>
+            <div class="article-actions">
+              <%= link_to "Edit this memory", edit_article_path(article), class: "btn btn-primary btn-sm"%>
+              <%= link_to "delete", article_path(article), method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
+            </div>
+            <div class="card-footer">
+              Created by:
+              <%= article.user.name if article.user%>,
+              <%= time_ago_in_words(article.created_at) %>
+              ago, last updated:
+              <%= time_ago_in_words(article.updated_at) %>
+              ago
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 
+
+    <a id="topbutton2"><img src="https://img.icons8.com/nolan/64/chevron.png"></a>
+
+
+  <script>
+    jQuery(document).ready(function() {
+
+  var btn = $('#topbutton2');
+
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 300) {
+      btn.addClass('show');
+    } else {
+      btn.removeClass('show');
+    }
+  });
+
+  btn.on('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate({scrollTop:0}, '300');
+  });
+
+});
+  </script>
 
 </body>

@@ -3,11 +3,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 
 <body id="coles-page">
 
   <div class="header" id="coles-name">
-    <div class="w3-display-topmiddle w3-hide-small">Crusine with cole</div>
+    <div class="w3-display-topmiddle w3-hide-small">Crusin with cole</div>
   </div>
 
   <!-- navbar -->
@@ -22,7 +26,7 @@
   <nav>
     <ul>
       <li>
-        <%= link_to "Home", root_path, class:"nav-link" %>
+        <%= link_to "Home", home_path, class:"nav-link" %>
       </li>
       <li class="green">
         <%= link_to "Stephanie", stephanie_path, class:"nav-link" %>
@@ -37,20 +41,68 @@
         <%= link_to "Log In", root_path, class:"nav-link" %>
       </li>
       <li class="purple">
-        <%= link_to "Log out", logout_path, method: :delete %>
+          <%= link_to "Create A New Memory", new_article_path, class:"nav-link" %>
       </li>
       <li class="purple">
         <%= link_to "Log out", logout_path, method: :delete %>
       </li>
     </ul>
   </nav>
-  <div class="jumbotron" id="coles-jumbotron" style="margin-bottom:0"></div>
+  <div class="jumbotron" id="coles-jumbotron" style="margin-bottom:0">
+
+    <!-- articles section -->
+    <% @articles.each do |article| %>
+        <div class="card" id="coles-card">
+          <div class="card-body">
+            <h4 class="card-title">
+              <%= link_to article.title, article_path(article)%></h4>
+            <p class="card-text">
+              <%= truncate(article.description)%></p>
+            <% if logged_in? && current_user == article.user %>
+              <div class="article-actions">
+                <%= link_to "Edit this memory", edit_article_path(article), class: "btn btn-primary btn-sm"%>
+                <%= link_to "delete", article_path(article), method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
+              </div>
+              <div class="card-footer">
+                Created by:
+                <%= article.user.name if article.user%>,
+                <%= time_ago_in_words(article.created_at) %>
+                ago, last updated:
+                <%= time_ago_in_words(article.updated_at) %>
+                ago
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+
+  <a id="topbutton1"></a>
 
   <script>
     $("#burger").click(function () {
       $(this).toggleClass("active");
       $("nav").toggleClass("show");
     });
+    //back to the top button
+    jQuery(document).ready(function() {
+
+  var btn = $('#topbutton1');
+
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 300) {
+      btn.addClass('show');
+    } else {
+      btn.removeClass('show');
+    }
+  });
+
+  btn.on('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate({scrollTop:0}, '300');
+  });
+
+});
   </script>
   <!-- end of navbar -->
 </body>
