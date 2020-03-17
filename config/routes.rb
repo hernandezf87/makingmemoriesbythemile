@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   get 'luther', to: 'welcome#luther'
   get 'delani', to: 'welcome#delani'
   get 'cole', to: 'welcome#cole'
-  get 'showluther', to: 'articles#showluther'
-  # resources :users, path: ""
+  get 'delanishow', to: 'articles#delanishow'
+  get 'luthershow', to: 'articles#luthershow'
+  get 'stephanieshow', to: 'articles#stephanieshow'
 
   resources :comments
   resources :articles

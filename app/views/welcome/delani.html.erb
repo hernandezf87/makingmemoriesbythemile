@@ -1,6 +1,8 @@
 <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Viaoda+Libre&display=swap" rel="stylesheet">
 <!-- boostrap styling-->
 <link href="https://fonts.googleapis.com/css?family=Faster+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -30,11 +32,14 @@
             <%= link_to "Cole", cole_path, class:"nav-link" %>
           </li>
           <li class="menu-item">
+            <%= link_to "Home", home_path, class:"nav-link" %>
+          </li>
+          <li class="menu-item">
             <%= link_to "Create A New Memory", new_article_path, class:"nav-link" %>
           </li>
         </ol>
       </li>
-      <li class="menu-item">
+      <!-- <li class="menu-item">
         <a href="#0">Kabobs</a>
         <ol class="sub-menu">
           <li class="menu-item">
@@ -47,7 +52,7 @@
             <a href="#0">Summer kabobs</a>
           </li>
         </ol>
-      </li>
+      </li> -->
       <li class="menu-item">
         <%= link_to "Log In", root_path, class:"nav-link" %>
       </li>
@@ -59,25 +64,27 @@
   <br><br><br><br>
   <!-- articles section -->
   <% @articles.each do |article| %>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">
-            <%= link_to article.title, article_path(article)%></h4>
+      <div class="card" id="delanicard">
+        <div class="card-header" id="delanicardheader">
+          <h2 class="card-title" id="delanicardtitle">
+            <%= link_to article.title, article_path(article)%></h2>
           <p class="card-text">
             <%= truncate(article.description)%></p>
-          <% if logged_in? && current_user == article.user %>
+          <div class="article-meta-details">
+            Created by:
+            <%= article.user.name if article.user%>,
+            <%= time_ago_in_words(article.created_at) %>
+            ago, last updated:
+            <%= time_ago_in_words(article.updated_at) %>
+            ago
+          </div>
+          <br>
+            <% if logged_in? && (current_user == article.user || current_user.admin?)%>
             <div class="article-actions">
               <%= link_to "Edit this memory", edit_article_path(article), class: "btn btn-primary btn-sm"%>
               <%= link_to "delete", article_path(article), method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
             </div>
-            <div class="card-footer">
-              Created by:
-              <%= article.user.name if article.user%>,
-              <%= time_ago_in_words(article.created_at) %>
-              ago, last updated:
-              <%= time_ago_in_words(article.updated_at) %>
-              ago
-            </div>
+
           <% end %>
         </div>
       <% end %>

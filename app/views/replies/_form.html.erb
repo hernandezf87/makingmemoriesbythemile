@@ -1,10 +1,11 @@
 <%= form_for([@article, @article.replies.build]) do |f| %>
 <div class="field">
-      <%= f.label :name, input_html: {class: "input"}, wrapper: false, label_html: {class: 'label'} %>
-      <%= f.text_field :name%>
+  <%= f.label :Full_Name, input_html: {class: "input"}, wrapper: false, label_html: {class: 'label'} %>
+  <%= f.text_field :name%>
 </div><br>
 <div class="field" align="center">
-      <%= f.text_area :reply, input_html: {class: "input"}, wrapper: false, label_html: {class: 'label'} %>
-</div><br>
-<%= f.button :submit, class: "btn btn-primary" %>
+  <div class="col-sm-12">
+    <%= f.text_area :reply, class: "form-control", placeholder: "type your comment", autofocus: true%>
+  </div><br><br><br>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

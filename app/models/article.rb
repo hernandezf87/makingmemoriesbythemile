@@ -11,6 +11,10 @@ class Article < ApplicationRecord
   # validates :descriptionimages, presence: false
   validates :clip, presence: false
   validates :user_id, presence: true
+
+  def thumbnail input
+    return self.images[input].variant(resize: '200x200!').processed
+  end
 #
 # # with_attached_images :images, :default_url => ""
 # validates_attachment_content_type :images, :content_type => /\Aimage\/.*\z/

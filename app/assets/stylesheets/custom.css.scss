@@ -394,30 +394,30 @@ nav {
 }
 //index list styles
 
-.card-footer text-muted {
+.article-meta-details {
   border-top: 1px solid #eaeaea;
   margin-top: 10px;
 }
+//
+// .article-actions {
+//   border-top: 1px solid #eaeaea;
+//   padding-top: 5px;
+// }
+//
+// .description {
+//   margin-top: 0;
+// }
 
-.article-actions {
-  border-top: 1px solid #eaeaea;
-  padding-top: 5px;
-}
+// .article-title {
+//   font-weight: bold;
+//   font-size: 1.5em;
+// }
 
-.description {
-  margin-top: 0;
-}
-
-.article-title {
-  font-weight: bold;
-  font-size: 1.5em;
-}
-
-.article-body {
-  border-top: 1px solid #eaeaea;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
+// .article-body {
+//   border-top: 1px solid #eaeaea;
+//   padding-top: 15px;
+//   padding-bottom: 15px;
+// }
 //initial page styling
 //initial page button styling
 
@@ -536,12 +536,12 @@ nav {
 //stephanies menu styling
 //
 
-.dropbtn {
+.dropbtn1 {
   background-color: transparent;
   border: none;
 }
 
-.dropdown {
+.dropdown1 {
   position: relative;
   display: inline-block;
   position: absolute;
@@ -549,33 +549,33 @@ nav {
   left: 47%;
 }
 
-.dropdown-content {
+.dropdown-content1 {
   display: none;
   position: absolute;
-  background-color: transparent;
+  background-color: #8654b8;
   min-width: 160px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: white;
   z-index: 1;
   top: 90%;
   left: 0;
 }
 
-.dropdown-content a {
-  color: black;
+.dropdown-content1 a {
+  color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.dropdown-content a:hover {
-  background-color: transparent;
+.dropdown-content1 a:hover {
+  background-color: white;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown1:hover .dropdown-content1 {
   display: block;
 }
 
-.dropdown:hover .dropbtn {
+.dropdown1:hover .dropbtn1 {
   background-color: transparent;
 }
 //end of stephanies page styling
@@ -662,7 +662,7 @@ body{
 
 .topnav{
    position: absolute;
-  left: 30vh;
+  left: 45vh;
   top: -10vh;
   // right: 70vh;
   // bottom: 2200vh;
@@ -855,7 +855,7 @@ body{
     }
   }
 }
-//luthers styling
+//luthers page styling
 #luthers-name {
   background: transparent;
   font-family: 'Rubik Mono One', sans-serif;
@@ -899,7 +899,7 @@ body{
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: transparent;
+  background-color: #ff6600;
   min-width: 160px;
   overflow: auto;
   box-shadow: #ff6100;
@@ -913,7 +913,7 @@ body{
   display: block;
 }
 
-.dropdown1 a:hover {
+.dropdown a:hover {
   background-color: #ff6100;
 }
 
@@ -1110,19 +1110,7 @@ body{
   color: black;
 }
 //luthers articles styling
-#cardluther {
-  background-color: transparent;
-}
-#carddelani {
-  background-color: transparent;
-}
-#coles-card{
-  background-color: transparent;
-  align-items: center;
-}
-#cardstephanie{
-  background-color: transparent;
-}
+
 //form for create new articles styling
 #form-body {
   background-image: url('');
@@ -1135,9 +1123,126 @@ body{
 #center {
   width: 400px;
 }
-trix-toolbar .trix-button-group button {
-  background-color: #34d8eb;
-}
+// trix-toolbar .trix-button-group button {
+//   background-color: #34d8eb;
+// }
 #index-body{
   background-image: url('cork-board.jpg');
+}
+//show page styling section
+#showpagebody {
+  background-image: url('cork-board.jpg');
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+}
+
+#firstcontainer{
+  background-color: #faf6e8;
+  border: 6px solid #ffffff;
+}
+
+#thirdcontainer {
+  background-color: #faf6e8;
+  border: 6px solid #ffffff;
+}
+#secondcontainer {
+  background-color: #faf6e8;
+  border: 6px solid #ffffff;
+}
+#fourthcontainer {
+  background-color: #faf6e8;
+  border: 6px solid #ffffff;
+}
+#fifthcontainer {
+  background-color: #faf6e8;
+  border: 6px solid #ffffff;
+}
+#containersix {
+  background-color: #faf6e8;
+  border: 6px solid #ffffff;
+}
+#showpagebody h1 {
+  font-family: 'Courgette', cursive;
+  color:#0087e8;
+  font-weight: bold;
+  text-shadow: 0.1em 0.1em 0.1em rgb(228, 232, 240);
+}
+#commenttitle h1{
+  font-weight: bold;
+}
+#replycontainer {
+  background-color: #faf6e8;
+  border: 6px solid #ffffff;
+}
+//stephanies articles  stylinf show page
+#stephaniescard {
+  background-color: transparent;
+  text-align: center;
+}
+#stephaniescardbody {
+  color: #865468;
+}
+#stephaniescardtitle a{
+  color: #88069c;
+
+  font-family: 'Alex Brush', cursive;
+}
+#coles-card{
+  background-color: transparent;
+  align-items: center;
+  position:relative;
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+  text-align: center;
+}
+#colescardtext {
+  font-weight: bold;
+  color: #fcfcfc;
+}
+#colescardtitle a{
+  color: #c94036;
+  font-family: 'Faster One', cursive;
+}
+#lutherscard {
+  background-color: transparent;
+  text-align: center;
+}
+#lutherscardbody {
+ color: #fff9e6;
+}
+#lutherscardtitle a{
+ color: #fccf51;
+ font-family: 'Rubik Mono One', sans-serif;
+}
+//delanis styling articles
+#delanicard{
+  background-color: transparent;
+  text-align: center;
+}
+#delanicardheader {
+  color: #56e8e8;
+}
+#delanicardtitle a{
+  color: #ebffff;
+  font-family: 'Viaoda Libre', cursive;
+
+}
+#pagetextuppercase a{
+  color: red;
+  text-decoration: underline;
+  font-size: 1.5em;
+}
+//sign up
+#signupcontainter {
+  background-image: url('cork-board.jpg');
+}
+//login
+#loginbody {
+  background-image: url('cork-board.jpg');
+  align-items: center;
 }

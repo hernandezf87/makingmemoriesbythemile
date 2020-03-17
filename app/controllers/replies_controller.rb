@@ -13,7 +13,7 @@ class RepliesController < ApplicationController
     @reply = Reply.find(params[:id])
     @reply.destroy
     flash[:danger] = "User and all articles created by user have been deleted"
-    redirect_to articles_path
+    redirect_to home_path
   end
 
   # def require_admin

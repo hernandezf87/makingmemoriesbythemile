@@ -48,29 +48,32 @@
       </li>
     </ul>
   </nav>
-  <div class="jumbotron" id="coles-jumbotron" style="margin-bottom:0">
 
+  <div class="jumbotron" id="coles-jumbotron" style="margin-bottom:0">
+<br><br><br><br><br><br><br>
     <!-- articles section -->
     <% @articles.each do |article| %>
-        <div class="card" id="coles-card">
-          <div class="card-body">
-            <h4 class="card-title">
-              <%= link_to article.title, article_path(article)%></h4>
-            <p class="card-text">
-              <%= truncate(article.description)%></p>
-            <% if logged_in? && current_user == article.user %>
+        <div class="card"  id="coles-card" >
+          <div class="card-body" id="colescardbody" >
+            <h2 class="card-title" id="colescardtitle">
+              <%= link_to article.title, article_path(article)%></h2>
+            <p class="card-text" id="colescardtext">
+              <%= truncate(article.description, length: 100)%></p>
+            <div class="card-footer">
+              Created by:
+              <%= article.user.name if article.user%>,
+              <%= time_ago_in_words(article.created_at) %>
+              ago, last updated:
+              <%= time_ago_in_words(article.updated_at) %>
+              ago
+            </div>
+            <br>
+            <% if logged_in? && (current_user == article.user || current_user.admin?) %>
               <div class="article-actions">
                 <%= link_to "Edit this memory", edit_article_path(article), class: "btn btn-primary btn-sm"%>
                 <%= link_to "delete", article_path(article), method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
               </div>
-              <div class="card-footer">
-                Created by:
-                <%= article.user.name if article.user%>,
-                <%= time_ago_in_words(article.created_at) %>
-                ago, last updated:
-                <%= time_ago_in_words(article.updated_at) %>
-                ago
-              </div>
+
             <% end %>
           </div>
         <% end %>
@@ -78,7 +81,7 @@
 
 
   <a id="topbutton1"></a>
-
+</div>
   <script>
     $("#burger").click(function () {
       $(this).toggleClass("active");

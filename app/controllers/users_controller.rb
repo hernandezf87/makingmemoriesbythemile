@@ -20,16 +20,9 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
     #@user = User.find(params[:id])
-  end
-
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    flash[:dange] = "User and all articles created by user have been deleted"
-    redirect_to user_path
   end
 
   def update
@@ -39,6 +32,12 @@ class UsersController < ApplicationController
     @user_articles = @user.articles
       @articles = Article.find(params[:articles_id])
       @articles = Article.all
+  end
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:dange] = "User and all articles created by user have been deleted"
+    redirect_to home_path
   end
 
   private
@@ -53,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @user
+    if current_user != @user and !current_user.admin?
       flash[:danger] = "you can only edit your own account"
       redirect_to home_path
     end

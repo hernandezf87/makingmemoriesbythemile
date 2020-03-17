@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="replycontainer">
   <article class="media">
     <div class="media-content">
       <div class="content">
@@ -7,6 +7,6 @@
         </p>
       </div>
     </div><br>
-    <%= link_to 'Delete', [reply.article, reply], method: :delete, class: "btn-small btn-danger", data: {confirm: "are you sure?"} %>
+  <%= link_to 'Delete', [reply.article, reply], method: :delete, class: "btn-small btn-danger", data: {confirm: "are you sure?"} %>
   </article>
 </div>

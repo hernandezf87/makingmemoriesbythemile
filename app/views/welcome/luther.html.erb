@@ -23,25 +23,27 @@
   </div>
 </div>
 <% @articles.each do |article| %>
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">
+    <div class="card" id="lutherscard">
+      <div class="card-body" id="lutherscardbody">
+        <h4 class="card-title" id="lutherscardtitle">
           <%= link_to article.title, article_path(article)%></h4>
         <p class="card-text">
-          <%= truncate(article.description)%></p>
-        <% if logged_in? && current_user == article.user %>
+          <%= truncate(article.description, length: 100)%></p>
+        <div class="card-footer">
+          Created by:
+          <%= article.user.name if article.user%>,
+          <%= time_ago_in_words(article.created_at) %>
+          ago, last updated:
+          <%= time_ago_in_words(article.updated_at) %>
+          ago
+        </div>
+        <br>
+        <% if logged_in? && (current_user == article.user || current_user.admin?)%>
           <div class="article-actions">
             <%= link_to "Edit this memory", edit_article_path(article), class: "btn btn-primary btn-sm"%>
-            <%= link_to "delete", article_path(article), method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
+            <%= link_to "delete", article_path(article) method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
           </div>
-          <div class="card-footer">
-            Created by:
-            <%= article.user.name if article.user%>,
-            <%= time_ago_in_words(article.created_at) %>
-            ago, last updated:
-            <%= time_ago_in_words(article.updated_at) %>
-            ago
-          </div>
+
         <% end %>
       </div>
     <% end %>

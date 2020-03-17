@@ -7,7 +7,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<p>
+<p align="center">
   <%= link_to "Create A New Memory", new_article_path %>
   ||
   <%= link_to 'Stephanie', stephanie_path %>||
@@ -26,20 +26,21 @@
         <h4 class="card-title">
           <%= link_to article.title, article_path(article)%></h4>
         <p class="card-text">
-          <%= truncate(article.description)%></p>
-        <% if logged_in? && current_user == article.user %>
+          <%= truncate(article.description, length: 100)%></p>
+        <% if logged_in? && (current_user == article.user || current_user.admin?)%>
+        <div class="card-footer">
+          Created by:
+          <small><%= article.user.name if article.user%>,
+          <%= time_ago_in_words(article.created_at) %>
+          ago, last updated:
+          <%= time_ago_in_words(article.updated_at) %>
+          ago</small>
+        </div>
           <div class="article-actions">
             <%= link_to "Edit this memory", edit_article_path(article), class: "btn btn-primary btn-sm"%>
             <%= link_to "delete", article_path(article), method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
           </div>
-          <div class="card-footer">
-            Created by:
-            <%= article.user.name if article.user%>,
-            <%= time_ago_in_words(article.created_at) %>
-            ago, last updated:
-            <%= time_ago_in_words(article.updated_at) %>
-            ago
-          </div>
+
         <% end %>
       </div>
     <% end %>

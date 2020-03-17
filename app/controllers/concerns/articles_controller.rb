@@ -3,25 +3,25 @@ class ArticlesController < ApplicationController
   before_action :require_user, except: [:index, :show]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
-  def showluther
+  def luthershow
    #  @article = Article.find(params[:id])
    # @user = User.find_by_id(params[:user_id])
    # @articles = Article.all
   end
 
-   def showstephanie
-   # @article = Article.find(params[:id])
-    # @user = User.find_by_id(params[:user_id])
-    # @articles = Article.all
+   def stephanieshow
+     @article = Article.find(params[:id])
+    @user = User.find_by_id(params[:user_id])
+    @articles = Article.all
   end
 
-  def showdelani
+  def delanishow
 
   end
 
   def index
-     @articles = Article.all
-     @articles = @current_user.article
+      @articles = Article.all
+     # @articles = @current_user.article
     #@articles = Article.paginate(page: params[:page], per_page: 5)
   end
 
@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
     @article.user = current_user
     if @article.save
       flash[:notice] = "Memorie Was Succesfully Created"
-      redirect_to articles_path(@article)
+      redirect_to article_path(@article)
   else
     render 'new'
   end
@@ -53,16 +53,17 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    #  @article = Article.find(params[:id])
-    # @user = User.find_by_id(params[:user_id])
-    # @articles = Article.all
+      @article = Article.find(params[:id])
+     @user = User.find_by_id(params[:user_id])
+     @articles = Article.all
+     @articles = params[:show]
   end
 
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
     flash[:danger] = "Memory was Succesfully deleted"
-    redirect_to articles_path(@article)
+    redirect_to articles_path
   end
 
   private
@@ -71,7 +72,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :description, :clip, :reply, images:[])
+    params.require(:article).permit(:title, :id, :description, :descriptions, :descriptionstwo, :descriptionsthree, :clip, :reply, images:[])
   end
 
   def require_same_user

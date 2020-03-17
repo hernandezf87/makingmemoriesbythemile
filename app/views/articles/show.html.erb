@@ -1,1 +1,81 @@
-<%= @article.title %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body id="showpagebody">
+    <h1 align="center"> <%= @article.title %> </h1>
+    <div class="container" id="firstcontainer" align="center">
+      <h5> <%= @article.title %> </h5>
+      <br>
+      <br>
+      <!-- <h5>Description:
+      </h5> -->
+      <%= @article.description %>
+    </div>
+    <br><br>
+    <div class="container" id="secondcontainer" align="center">
+      <!-- <h4>Check out our video:
+      </h4> -->
+      <%= video_tag(url_for(@article.clip), :size => "500x500", :controls => true) %>
+    </div>
+    <div class="container" id="thirdcontainer">
+      <!-- <h5>About our video</h5> -->
+      <%= @article.descriptions %>
+    </div>
+    <br><br>
+    <div class="container" id="fourthcontainer" align="center">
+      <!-- <h5>Our photos</h5> -->
+      <% (0...@article.images.count).each do |image| %>
+        <%= image_tag(@article.thumbnail(image))%>
+      <% end %>
+      </div>
+      <div class="container" id="fifthcontainer" align="center">
+        <!-- <h5>About our photos</h5> -->
+        <%= @article.descriptionstwo %>
+      </div>
+
+
+    <br><br>
+    <br><br>
+    <div class="container" id="containersix" align="center">
+      <h5>My assignment</h5>
+      <%= @article.descriptionsthree %>
+    </div>
+    <section class= "section" replies="replies" id="sectionreplies">
+      <h2 class="subtitle is-6" ,="," align="center">
+        <%= @article.replies.count %>
+        Comments</h2>
+
+      <div class="comment-form" ,="," align="center">
+        <%= render @article.replies %>
+        <hr>
+        <h2 class="subtitle is-1"><b>Drop a line</b></h2>
+        <%= render 'replies/form' %>
+      </div>
+    </section>
+    <p align="center">
+      <%= link_to "Create A New Memory", new_article_path %>
+      ||
+      <%= link_to 'Stephanie', stephanie_path %>||
+      <%= link_to 'Luther', luther_path %>
+      ||
+      <%= link_to 'Delani', delani_path %>
+      ||
+      <%= link_to 'Cole', cole_path %>
+      ||
+      <%= link_to 'home', home_path %>
+    </p>
+  </body>
+
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"/>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</html>

@@ -1,6 +1,7 @@
 <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"/>
 <!-- boostrap styling-->
 <link href="https://fonts.googleapis.com/css?family=Faster+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -15,10 +16,10 @@
     <div>Stephanie</div>
   </div>
 
-  <div class="dropdown">
-    <button class="dropbtn">
+  <div class="dropdown1">
+    <button class="dropbtn1">
       <img src="https://img.icons8.com/nolan/96/menu.png"></button>
-    <div class="dropdown-content">
+    <div class="dropdown-content1">
       <%= link_to "Home", home_path, class:"nav-link" %>
       <%= link_to "Delaney", delani_path, class:"nav-link" %>
       <%= link_to "Cole", cole_path, class:"nav-link" %>
@@ -30,25 +31,27 @@
   </div>
   <!-- articles section -->
   <% @articles.each do |article| %>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">
-            <%= link_to article.title, article_path(article)%></h4>
+      <div class="card" id="stephaniescard">
+        <div class="card-body" id="stephaniescardbody">
+          <h1 class="card-title" id="stephaniescardtitle">
+             <%= link_to article.title, article_path(article) %></h1>
           <p class="card-text">
-            <%= truncate(article.description)%></p>
-          <% if logged_in? && current_user == article.user %>
+            <%= truncate(article.description, length: 100)%></p>
+          <div class="card-footer">
+            Created by:
+            <%= article.user.name if article.user%>,
+            <%= time_ago_in_words(article.created_at) %>
+            ago, last updated:
+            <%= time_ago_in_words(article.updated_at) %>
+            ago
+          </div>
+          <br>
+            <% if logged_in? && (current_user == article.user || current_user.admin?) %>
             <div class="article-actions">
               <%= link_to "Edit this memory", edit_article_path(article), class: "btn btn-primary btn-sm"%>
               <%= link_to "delete", article_path(article), method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
             </div>
-            <div class="card-footer">
-              Created by:
-              <%= article.user.name if article.user%>,
-              <%= time_ago_in_words(article.created_at) %>
-              ago, last updated:
-              <%= time_ago_in_words(article.updated_at) %>
-              ago
-            </div>
+
           <% end %>
         </div>
       <% end %>

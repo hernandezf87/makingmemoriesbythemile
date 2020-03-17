@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="pin pinE"><img src="https://img.icons8.com/doodle/48/000000/pin.png"></div><br>
-<br>
+        <br>
         <div class="fakeimg">
           <h5>
             Making Memories
@@ -38,14 +38,15 @@
         <div class="fakeimg1">
           <div class="pin pinF"><img src="https://img.icons8.com/ios-glyphs/30/000000/pin.png"></div>
 
-          </div>
+        </div>
 
-        <div class="fakeimg2"><i>THE MEMORY MOBILE!</i>
-        <div class="pin pinG"><img src="https://img.icons8.com/ios-glyphs/30/000000/pin.png"></div>
+        <div class="fakeimg2">
+          <i>THE MEMORY MOBILE!</i>
+          <div class="pin pinG"><img src="https://img.icons8.com/ios-glyphs/30/000000/pin.png"></div>
         </div>
       </div>
     </div>
-    </div>
+  </div>
 
   <div id="map"></div>
   <script>
@@ -340,54 +341,103 @@
     }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO3NqpxFNNLBEC2oWMjBxGimF0Ukeh37I&callback=initMap" async="async" defer="defer"></script>
-<!-- Footer -->
-<footer class="page-footer font-small indigo">
+  <!-- Footer -->
+  <!-- Footer -->
+  <footer class="page-footer">
 
-  <!-- Footer Links -->
-  <div class="container">
-    <!-- Grid column -->
-      <div class="col-md-2 mb-3">
-        <h6 class="text-uppercase font-weight-bold">
-          <%= link_to 'stephanie', stephanie_path %>
-        </h6>
-      </div>
-      <!-- Grid column -->
+    <!-- Footer Links -->
+    <div class="container" id="pagefooter1">
 
-      <!-- Grid column -->
-      <div class="col-md-2 mb-3">
-        <h6 class="text-uppercase font-weight-bold">
-          <%= link_to 'Luthers',luther_path %>
-        </h6>
-      </div>
-      <!-- Grid column -->
+      <!-- Grid row-->
+      <div class="row text-center d-flex justify-content-center pt-5 mb-3">
 
-      <!-- Grid column -->
-      <div class="col-md-2 mb-3">
-        <h6 class="text-uppercase font-weight-bold">
-          <%= link_to 'Delani', delani_path %>
-        </h6>
-      </div>
-      <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-md-2 mb-3" >
+          <h6 class="text-uppercase font-weight-bold black-text" id="pagetextuppercase">
+            <%= link_to "Stephanie", stephanie_path, class:"nav-link" %>
+          </h6>
+        </div>
+        <!-- Grid column -->
 
-      <!-- Grid column -->
-      <div class="col-md-2 mb-3">
-        <h6 class="text-uppercase font-weight-bold">
-          <%= link_to 'Cole', cole_path %>
-        </h6>
+        <!-- Grid column -->
+        <div class="col-md-2 mb-3">
+          <h6 class="text-uppercase font-weight-bold" id="pagetextuppercase">
+            <%= link_to "Delaney", delani_path, class:"nav-link" %>
+          </h6>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 mb-3">
+          <h6 class="text-uppercase font-weight-bold" id="pagetextuppercase">
+            <%= link_to "Cole", cole_path, class:"nav-link" %>
+          </h6>
+        </div>
+        <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-md-2 mb-3">
+          <h6 class="text-uppercase font-weight-bold" id="pagetextuppercase">
+            <%= link_to "Luther", luther_path, class:"nav-link" %>
+          </h6>
+        </div>
+        <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-md-2 mb-3">
+          <h6 class="text-uppercase font-weight-bold" id="pagetextuppercase">
+            <%= link_to "Create A New Memory", new_article_path, class:"nav-link" %>
+          </h6>
+        </div>
+        <!-- Grid column -->
+
+
+
       </div>
-      <!-- Grid column -->
-    <!-- Grid row-->
-    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
-      <!-- Grid column -->
-      <div class="col-md-2 mb-3">
-        <h6 class="text-uppercase font-weight-bold">
-          <%= link_to "making memories by the mile blog", articles_path %>
-        </h6>
+      <!-- Grid row-->
+      <hr class="rgba-white-light" style="margin: 0 15%;">
+
+      <!-- Grid row-->
+      <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+        <!-- Grid column -->
+        <!-- <div class="col-md-8 col-12 mt-5">
+          <p style="line-height: 1.7rem">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium, totam rem
+            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+            explicabo.
+            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+        </div> -->
+        <!-- Grid column
+
       </div>
-      <!-- Grid column -->
+      <!-- Grid row-->
+      <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+      <!-- Grid row-->
+      <div class="row pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-12">
+
+          <div class="mb-5 flex-center">
+
+
+          </div>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row-->
 
     </div>
-  </div>
-</footer>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright: Frank Hernandez
+      <!-- <a href="https://mdbootstrap.com/"> MDBootstrap.com</a> -->
+    </div>
+    <!-- Copyright -->
+
+  </footer>
 
 </body>
