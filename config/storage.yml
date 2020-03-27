@@ -10,7 +10,7 @@ local:
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
  amazon:
    service: S3
-   access_key_id: <%= Rails.application.credentials.dig(:aws, :AKIAR2XYXL7YWMFAUUTC ) %>
+   access_key_id: <%= Rails.application.credentials.dig(:aws, :AKIAR2XYXL7YWMFAUUTC) %>
    secret_access_key: <%= Rails.application.credentials.dig(:aws, :+Z07ykY0MqkZq+xirNw/W17tlXL1pzrStkPqBZgZ) %>
    region: us-east-2
    bucket: memories-storage-user
