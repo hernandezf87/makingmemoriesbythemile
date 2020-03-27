@@ -12,7 +12,7 @@ local:
    service: S3
    access_key_id: <%= Rails.application.credentials.dig(:aws, :AKIAR2XYXL7YWMFAUUTC ) %>
    secret_access_key: <%= Rails.application.credentials.dig(:aws, :+Z07ykY0MqkZq+xirNw/W17tlXL1pzrStkPqBZgZ) %>
-   region: us-east-1
+   region: us-east-2
    bucket: memories-storage-user
 
 # Remember not to checkin your GCS keyfile to a repository
