@@ -1,19 +1,19 @@
 test:
-  service:            Disk
-  root:               <%= Rails.root.join("tmp/storage") %>
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
 
 local:
-  service:            Disk
-  root:               <%= Rails.root.join("storage") %>
-  #host:              "https://localhost:3000"
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+  host: "https://localhost:3000"
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
- amazon:
-   service:           S3
-   access_key_id:     AKIAR2XYXL7YWMFAUUTC
+amazon:
+   service: S3
+   access_key_id: AKIAR2XYXL7YWMFAUUTC
    secret_access_key: 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
-   region:            us-east-2
-   bucket:            memories-storage-user
+   region: us-east-2
+   bucket: memories-storage-user
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
