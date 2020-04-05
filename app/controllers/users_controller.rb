@@ -43,7 +43,6 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :id)
-    redirect_to home_path
   end
 
 
