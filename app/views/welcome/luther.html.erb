@@ -41,7 +41,7 @@
         <% if logged_in? && (current_user == article.user || current_user.admin?)%>
           <div class="article-actions">
             <%= link_to "Edit this memory", edit_article_path(article), class: "btn btn-primary btn-sm"%>
-            <%= link_to "delete", article_path(article) method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
+            <%= link_to "delete", article_path(article), method: :delete, data: {confrim: "Are you sure you would like to delete this?"}, class: "btn btn-danger btn-sm" %>
           </div>
 
         <% end %>
