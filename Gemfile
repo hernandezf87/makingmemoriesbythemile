@@ -6,7 +6,7 @@ ruby '2.6.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.3', '>= 1.3.11'
+
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -35,7 +35,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem "aws-sdk-s3", require: false
 
 group :development, :test do
-#add  gem 'sqlite3' back here aafter testing
+gem 'sqlite3', '~> 1.3', '>= 1.3.11'#add  gem 'sqlite3' back here aafter testing
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
