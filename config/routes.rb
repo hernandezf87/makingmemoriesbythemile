@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'welcome#initial'
   get 'home', to:'welcome#home'
   get 'signup', to:'users#new'

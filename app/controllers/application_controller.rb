@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  #before_action :authenticate_users!
 
   protect_from_forgery with: :exception
 

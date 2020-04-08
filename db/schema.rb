@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_172353) do
+ActiveRecord::Schema.define(version: 2020_04_07_190931) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_172353) do
     t.string "password_digest"
     t.boolean "admin", default: false
     t.string "name"
+    t.boolean "approved", default: false, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
